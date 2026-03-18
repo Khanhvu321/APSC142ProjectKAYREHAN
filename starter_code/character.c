@@ -12,12 +12,23 @@ extern int width;
 
 char sees_player(int player_y, int player_x, int minotaur_y, int minotaur_x) {
     // check to see if the Minotaur has caught the player
+    if (player_x==minotaur_x&&player_y==minotaur_y) {
+        return CAUGHT_PLAYER;
+
+    }
     // check if neither the x nor y coordinate is the same as the player
+    if (player_x!=minotaur_x|| player_y!=minotaur_y) {
+        return SEES_NOTHING;
+    }
     // if there's a wall in between, they can't see
+    if (player_x==minotaur_x) {
+        for (int i=0; i<abs(player_x-minotaur_x); i++){
+            if (map[minotaur_y*width+i]==
+        }
+    }
     // if one of them is the same, check if the path in between is clear
     return SEES_NOTHING;
 }
-
 int move_character(int * y, int * x, char direction, char character) {
     // check for an invalid direction (not LEFT, RIGHT, UP, or DOWN)
     if (direction != LEFT && direction != RIGHT && direction != UP && direction != DOWN) {
